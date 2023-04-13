@@ -36,7 +36,9 @@ Packages
   [a93c6f00] DataFrames v1.5.0
   [31c24e10] Distributions v0.25.87
   [7073ff75] IJulia v1.24.0
+  [b964fa9f] LaTeXStrings v1.3.0
   [23fbe1c1] Latexify v0.15.18
+  [442fdcdd] Measures v0.3.2
   [91a5bcdd] Plots v1.38.9
   [9a3f8284] Random
   [10745b16] Statistics v1.9.0
