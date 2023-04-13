@@ -178,7 +178,7 @@ end
 
 
 function sim_study(N, p1, p2, alpha)
-    tab = generate_counts(500, N, p1, p2, alpha, "-")
+    tab = generate_counts(100_000, N, p1, p2, alpha, "-")
     lb = (mapslices(x -> 2*x[2]*x[3]*x[1]/(x[2]*x[3]+x[1]^2), tab, dims = 1) .+ sum(tab[1:3,:], dims=1))
     ub = (mapslices(x -> sqrt(x[2]*x[3]), tab, dims = 1) .+ sum(tab[1:3,:], dims=1))
     me = (lb .+ ub) ./2
