@@ -181,7 +181,7 @@ function variance_estimation(;N_est::Real, n₁₁::Real,
 end
 
 ## simulation study with 100 000 replicates
-function sim_study(N, p1, p2, alpha, nsims=100_000)
+function sim_study(N, p1, p2, alpha, nsims=100_000, bt = "New")
     tab = generate_counts(nsims, N, p1, p2, alpha, "-")
     lb = (mapslices(x -> 2*x[2]*x[3]*x[1]/(x[2]*x[3]+x[1]^2), tab, dims = 1) .+ sum(tab[1:3,:], dims=1))
     ub = (mapslices(x -> sqrt(x[2]*x[3]), tab, dims = 1) .+ sum(tab[1:3,:], dims=1))
@@ -191,7 +191,7 @@ function sim_study(N, p1, p2, alpha, nsims=100_000)
      table1 = vcat(mean(res, dims=1) .- N, var(res, dims=1))'
 
     table2=hcat(
-        bias_approximation(N = N, p₁ = p1, p₂ = p2, α = alpha, dependence = "-", bias_type = "New") |> collect,
+        bias_approximation(N = N, p₁ = p1, p₂ = p2, α = alpha, dependence = "-", bias_type = bt) |> collect,
         variance_approximation(N = N, p₁ = p1, p₂ = p2, α = alpha, dependence = "-") |> collect
         )
 
