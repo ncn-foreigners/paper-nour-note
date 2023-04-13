@@ -4,7 +4,7 @@ Repository for the paper "A note on Nour (1982) dual-system estimator"
 
 ## Setup
 
-1. Install Julia [download](https://julialang.org/downloads/)
+1. Install Julia ([download here](https://julialang.org/downloads/))
 2. Clone repository with `git clone https://github.com/ncn-foreigners/paper-nour-note.git`
 3. Run `cd paper-nour-note`
 4. Run `julia` in this folder (you may check the working directory using `pwd()`)
@@ -19,9 +19,7 @@ notebook(dir=".")
 ```
 
 
-
 ## Reproducing
-
 
 ### Environment
 
@@ -30,7 +28,7 @@ Julia Version 1.9.0-rc1
 Commit 3b2e0d8fbc1 (2023-03-07 07:51 UTC)
 ```
 
-Packages
+### Packages
 
 ```julia
   [a93c6f00] DataFrames v1.5.0

@@ -1,4 +1,5 @@
 ## functions
+### generate counts according to bivariate Bernoulli distribution
 function generate_counts(
         nsims::Integer,
         N::Integer, 
@@ -24,6 +25,7 @@ function generate_counts(
     return res
 end
 
+### bias approximation (equations 28-30)
 function bias_approximation(;N::Integer, α::Real, 
                             p₁::Real, p₂::Real, 
                             dependence = "+", 
@@ -69,7 +71,7 @@ function bias_approximation(;N::Integer, α::Real,
 end
 
 
-
+### variance approximation (equations 28-30)
 function variance_approximation(;N::Integer, α::Real, 
                                  p₁::Real, p₂::Real, 
                                  dependence = "+")
@@ -128,6 +130,8 @@ function variance_approximation(;N::Integer, α::Real,
     return (var_lower, var_mean, var_upper)
 end
 
+### variance estimation based on estimated N and known counts: n_11, n_10, n_01 (equations 28-30)
+
 function variance_estimation(;N_est::Real, n₁₁::Real, 
                              n₁₀::Real, n₀₁::Real)
     p₀₀ = (N_est - (n₁₀ + n₀₁ + n₁₁)) / N_est
@@ -176,9 +180,9 @@ function variance_estimation(;N_est::Real, n₁₁::Real,
     return (var_lower, var_mean, var_upper)
 end
 
-
-function sim_study(N, p1, p2, alpha)
-    tab = generate_counts(500, N, p1, p2, alpha, "-")
+## simulation study with 100 000 replicates
+function sim_study(N, p1, p2, alpha, nsims=100_000)
+    tab = generate_counts(nsims, N, p1, p2, alpha, "-")
     lb = (mapslices(x -> 2*x[2]*x[3]*x[1]/(x[2]*x[3]+x[1]^2), tab, dims = 1) .+ sum(tab[1:3,:], dims=1))
     ub = (mapslices(x -> sqrt(x[2]*x[3]), tab, dims = 1) .+ sum(tab[1:3,:], dims=1))
     me = (lb .+ ub) ./2
