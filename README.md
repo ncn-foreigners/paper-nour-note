@@ -1,6 +1,6 @@
 # Readme
 
-Repository for the paper "A note on Nour (1982) dual-system estimator"
+Repository for the paper "A note on Nour (1982) dual-system estimator". See paper [here](paper/note_on_nour.pdf)
 
 ## Setup
 
@@ -17,7 +17,6 @@ Pkg.activate(".")
 using IJulia
 notebook(dir=".")
 ```
-
 
 ## Reproducing
 
